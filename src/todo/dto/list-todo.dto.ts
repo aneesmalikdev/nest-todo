@@ -1,6 +1,6 @@
 import { IsEnum, IsNumber, IsOptional, IsString } from 'class-validator';
 import { TaskStatus, TaskPriority } from '../entities/todo.entity';
-import { Type } from 'class-transformer';
+import { Transform, Type } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class ListTodoDto {
@@ -15,6 +15,10 @@ export class ListTodoDto {
     required: false,
   })
   @IsOptional()
+  @Transform(
+    ({ value }: { value: string }) =>
+      value && value[0].toUpperCase() + value.slice(1).toLowerCase(),
+  )
   @IsEnum(TaskStatus)
   status?: TaskStatus;
 
@@ -23,6 +27,10 @@ export class ListTodoDto {
     example: TaskPriority.RED,
     required: false,
   })
+  @Transform(
+    ({ value }: { value: string }) =>
+      value && value[0].toUpperCase() + value.slice(1).toLowerCase(),
+  )
   @IsOptional()
   @IsEnum(TaskPriority)
   priority?: TaskPriority;

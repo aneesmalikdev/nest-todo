@@ -3,6 +3,7 @@ import {
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
+  Index,
 } from 'typeorm';
 
 export enum TaskStatus {
@@ -23,15 +24,18 @@ export class Todo {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @Index()
   @Column()
   name: string;
 
   @Column({ type: 'timestamp' })
   dueDate: Date;
 
+  @Index()
   @Column({ type: 'enum', enum: TaskStatus, default: TaskStatus.PENDING })
   status: TaskStatus;
 
+  @Index()
   @Column({ type: 'enum', enum: TaskPriority, default: TaskPriority.BLUE })
   priority: TaskPriority;
 
