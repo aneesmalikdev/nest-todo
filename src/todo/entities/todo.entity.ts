@@ -6,16 +6,16 @@ import {
 } from 'typeorm';
 
 export enum TaskStatus {
-  PENDING = 'pending',
-  DONE = 'done',
-  IN_PROGRESS = 'in-progress',
-  PAUSED = 'paused',
+  PENDING = 'Pending',
+  DONE = 'Done',
+  IN_PROGRESS = 'In Progress',
+  PAUSED = 'Paused',
 }
 
 export enum TaskPriority {
-  RED = 'red',
-  YELLOW = 'yellow',
-  BLUE = 'blue',
+  RED = 'Red',
+  YELLOW = 'Yellow',
+  BLUE = 'Blue',
 }
 
 @Entity('todos')
